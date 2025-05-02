@@ -7,10 +7,8 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
-# Logging setup
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 app = Flask(__name__)
@@ -18,20 +16,16 @@ app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY", "dev-secret-key"
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///users.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# CORS
 CORS(app,
      resources={r"/*": {"origins": os.environ.get("FRONTEND_URL", "http://127.0.0.1:5500")}},
      supports_credentials=True,
      allow_headers=["Content-Type", "Authorization"],
-     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-)
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
-# Extensions
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-# ─── Models ─────────────────────────────
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
@@ -51,16 +45,54 @@ class ScanResult(db.Model):
 with app.app_context():
     db.create_all()
 
-# ─── Helper ─────────────────────────────
 def is_valid_url(url):
     pattern = re.compile(r'^https?://[^\s/$.?#].[^\s]*$')
     return bool(pattern.match(url))
 
-# ─── Routes ─────────────────────────────
-
 @app.route("/")
 def index():
-    return render_template("home.html")  # Make sure this file exists in /templates
+    return render_template("home.html")
+
+@app.route("/login.html")
+def login_page():
+    return render_template("login.html")
+
+@app.route("/register.html")
+def register_page():
+    return render_template("register.html")
+
+@app.route("/scanner.html")
+@jwt_required(optional=True)
+def scanner_page():
+    return render_template("scanner.html")
+
+@app.route("/hub.html")
+@jwt_required(optional=True)
+def hub_page():
+    return render_template("hub.html")
+
+@app.route("/management.html")
+@jwt_required(optional=True)
+def management_page():
+    return render_template("management.html")
+
+@app.route("/dashboard.html")
+@jwt_required(optional=True)
+def dashboard_page():
+    return render_template("dashboard.html")
+
+@app.route("/help.html")
+def help_page():
+    return render_template("help.html")
+
+@app.route("/cookies.html")
+def cookies_page():
+    return render_template("cookies.html")
+
+@app.route("/graph.html")
+@jwt_required(optional=True)
+def graph_page():
+    return render_template("graph.html")
 
 @app.route("/register", methods=["OPTIONS", "POST"])
 def register():
@@ -206,6 +238,5 @@ def delete_scan(scan_id):
     db.session.commit()
     return jsonify(msg="Deleted"), 200
 
-# ─── Run ───────────────────────────────
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
