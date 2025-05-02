@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pen Shield</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">Pen Shield</div>
+      <nav>
+        <a href="login.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Pen Shield</h1>
+      <p>Run quick vulnerability scans, track your history, and keep your web apps secure—all in one place.</p>
+      <a class="btn" href="register.html">Get Started</a>
+    </div>
+  </section>
+
+  <!-- NEW: Graph Trends embedded here -->
+  <section class="graph-section">
+    <h2>Graph Trends</h2>
+    <div class="graph-wrapper">
+      <iframe
+        src="graph.html"
+        width="100%"
+        height="400"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>Instant Scan</h3>
+      <p>Enter any URL and see a simulated security report in seconds.</p>
+    </div>
+    <div class="feature-card">
+      <h3>History &amp; Reports</h3>
+      <p>Save your scans and revisit previous reports whenever you like.</p>
+    </div>
+    <div class="feature-card">
+      <h3>User Dashboard</h3>
+      <p>Manage your settings, view your profile, and customize your experience.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Pen Shield. All rights reserved.
+  </footer>
+</body>
+</html>

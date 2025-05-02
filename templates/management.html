@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Pen Shield — My Scans</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/management.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="hub.html">Hub</a>
+    <a href="scanner.html">Scanner</a>
+    <a class="active" href="management.html">My Scans</a>
+  </aside>
+
+  <main class="main">
+    <h1>My Saved Scans</h1>
+    <div class="controls">
+      <input id="filterInput" placeholder="Filter by URL or Risk…"/>
+      <button id="refreshBtn" type="button">Refresh</button>
+      <button id="clearAllBtn" type="button">Clear All</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th><th>URL</th><th>Status</th><th>Risk</th><th>Date</th><th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="scansTableBody"></tbody>
+    </table>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/management.js') }}"></script>
+</body>
+</html>

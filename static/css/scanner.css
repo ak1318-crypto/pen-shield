@@ -1,0 +1,166 @@
+/* ─── Reset & Base ───────────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f0f4f8;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* ─── Top Bar & Nav Buttons ───────────────────────────────────────────────── */
+
+.top-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1f4e79;
+  color: #fff;
+  padding: 1rem;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-btn {
+  position: absolute;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  transition: background 0.2s;
+}
+.nav-btn:first-of-type { /* the “← Hub” link */
+  left: 1rem;
+}
+.nav-btn:last-of-type { /* the “Management” link */
+  right: 1rem;
+}
+.nav-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+
+/* ─── Page Layout ───────────────────────────────────────────────────────── */
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ─── Card Sections ──────────────────────────────────────────────────────── */
+
+.card {
+  background: #fff;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ─── Scanner Input ──────────────────────────────────────────────────────── */
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.input-group input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input-group button {
+  background: #1f4e79;
+  color: #fff;
+  border: none;
+  padding: 0 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.input-group button:hover {
+  background: #163d5a;
+}
+.input-group button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ─── Scan Summary ───────────────────────────────────────────────────────── */
+
+#scanSummary p {
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Security Headers Table ─────────────────────────────────────────────── */
+
+#securityHeadersTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+#securityHeadersTable th,
+#securityHeadersTable td {
+  border: 1px solid #ddd;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+#securityHeadersTable th {
+  background: #e5eef8;
+}
+#securityHeadersTable tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* ─── Raw JSON & Save Button ─────────────────────────────────────────────── */
+
+.raw-json {
+  background: #f4f7fa;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.save-btn {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.save-btn:hover {
+  background: #1e7e34;
+}
+
+/* ─── Loading Spinner ────────────────────────────────────────────────────── */
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ccc;
+  border-top-color: #1f4e79;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

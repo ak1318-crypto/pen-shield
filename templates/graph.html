@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub - Animated Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <h1>Graph Trends</h1>
+    <div class="graph-container">
+        <canvas id="graphCanvas"></canvas>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById("graphCanvas").getContext("2d");
+
+            // Initial dataset with 12 months
+            let labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let dataPoints = [10, 25, 14, 32, 20, 30, 28, 35, 22, 40, 38, 45];
+
+            // Create the Chart.js instance
+            const graphChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: labels.slice(0, 6), // Display only first 6 months at a time
+                    datasets: [{
+                        label: "Activity Trends",
+                        data: dataPoints.slice(0, 6), // Display first 6 months of data
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1000, 
+                        easing: "linear"
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Function to update the graph every 2 seconds
+            function updateGraph() {
+                labels.push(labels.shift()); // Rotate months
+                dataPoints.push(Math.floor(Math.random() * 50) + 10); // Generate new random data point
+                dataPoints.shift(); // Remove the oldest data
+
+                // Update the chart's labels and dataset
+                graphChart.data.labels = labels.slice(0, 6); // Keep showing 6 months
+                graphChart.data.datasets[0].data = dataPoints.slice(0, 6);
+
+                // Refresh the chart
+                graphChart.update();
+            }
+
+            // Call updateGraph every 2 seconds
+            setInterval(updateGraph, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Pen Shield — Dashboard</title>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+  <nav class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="hub.html"><i class="icon-user"></i> Hub</a>
+    <a href="scanner.html"><i class="icon-scan"></i> Scanner</a>
+    <a class="active" href="dashboard.html"><i class="icon-settings"></i> Profile</a>
+  </nav>
+
+  <main class="main-content">
+    <header>
+      <h1>My Profile</h1>
+    </header>
+
+    <section class="card">
+      <h2>Update Credentials</h2>
+      <div class="form-group">
+        <label for="newUsername">New Username</label>
+        <input id="newUsername" type="text" placeholder="leave blank to keep" />
+      </div>
+      <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input id="newPassword" type="password" placeholder="leave blank to keep" />
+      </div>
+      <div class="form-actions">
+        <button id="updateProfileBtn" class="btn primary">Update Profile</button>
+        <button id="deleteAccountBtn" class="btn danger">Delete Account</button>
+      </div>
+      <p id="profileMsg" class="message" style="display:none;"></p>
+    </section>
+  </main>

@@ -1,0 +1,91 @@
+/* hub.css */
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  /* Overall Page Styling */
+  body {
+    background: #fdfdfd;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Top Navigation Bar */
+  .navbar {
+    background: #1e293b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  .navbar h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border-radius: .375rem;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .nav-link:hover {
+    background: #2563eb;
+    color: #fff;
+  }
+  
+  /* Main Section */
+  .main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  /* Buttons */
+  .main-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  .main-buttons a {
+    text-decoration: none;
+    padding: .75rem 1.5rem;
+    background: #3b82f6;
+    color: #fff;
+    border-radius: .375rem;
+    font-weight: 500;
+    transition: background .2s, transform .2s;
+  }
+  .main-buttons a:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+  }
+  
+  /* Bottom Footer Links */
+  .bottom-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: #1e293b;
+    padding: 1rem 2rem;
+  }
+  .footer-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: .9rem;
+    transition: color .2s;
+  }
+  .footer-link:hover {
+    color: #fff;
+  }
+  

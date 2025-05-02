@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Pen Shield Scanner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/scanner.css') }}">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="hub.html" class="nav-btn">← Hub</a>
+    <h1>Pen Shield Scanner</h1>
+    <a href="management.html" class="nav-btn">Management</a>
+  </header>
+
+  <main class="container">
+    <!-- Loading indicator -->
+    <div id="loading" style="display: none; text-align: center;">
+      <p>Scanning… <span class="spinner"></span></p>
+    </div>
+
+    <!-- Scan input -->
+    <section class="card">
+      <h2>Enter the URL to scan:</h2>
+      <div class="input-group">
+        <input id="scan-url" type="url" placeholder="https://example.com" />
+        <button type="button" id="startScanBtn">Start Scanning</button>
+      </div>
+    </section>
+
+    <!-- Scan summary -->
+    <section class="card">
+      <h2>Scan Summary</h2>
+      <div id="scanSummary"></div>
+    </section>
+
+    <!-- Security headers table -->
+    <section class="card">
+      <h2>Security Headers</h2>
+      <table id="securityHeadersTable">
+        <thead><tr><th>Header</th><th>Present?</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Raw JSON + save -->
+    <section class="card">
+      <h2>Raw JSON</h2>
+      <pre id="scanResultRaw" class="raw-json"></pre>
+      <button type="button" id="saveScanBtn" class="save-btn" style="display:none">
+        💾 Save Report
+      </button>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Pen Shield — Help & Support</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/management.css') }}">
+  <style>
+    .faq .question {
+      cursor: pointer;
+      font-weight: bold;
+      padding: .5rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .faq .answer {
+      display: none;
+      padding: .5rem 1rem;
+      color: #333;
+      background: #f9f9f9;
+      border-left: 3px solid #3498db;
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="hub.html">Hub</a>
+    <a href="scanner.html">Scanner</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a class="active" href="help.html">Help & Support</a>
+    <a href="cookies.html">Cookie Policy</a>
+  </nav>
+
+  <main class="main-content">
+    <header>
+      <h1>Help & Support</h1>
+    </header>
+
+    <section class="card">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="question">How do I start a new scan?</div>
+        <div class="answer">
+          Go to the <strong>Scanner</strong> tab, enter the URL you want to test, and click “Start Scanning.”
+        </div>
+
+        <div class="question">How do I save my scan results?</div>
+        <div class="answer">
+          After your scan finishes, choose “Save” on the results page to persist it in your account.
+        </div>
+
+        <div class="question">Can I download my results?</div>
+        <div class="answer">
+          No—on <strong>My Saved Scans</strong>, only allows Users to serach their filter/delte their scans, Downloading will be added soon!
+        </div>
+
+        <div class="question">Who do I contact for further help?</div>
+        <div class="answer">
+          Email our support team at <a href="mailto:support@penshield.com">support@penshield.com</a> or open a ticket via the Hub.
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Contact Us</h2>
+      <p>
+        If your question isn’t covered above, drop us a line at
+        <a href="mailto:support@penshield.com">support@penshield.com</a>
+        and we’ll get back to you within 24 hours.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.faq .question').forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
