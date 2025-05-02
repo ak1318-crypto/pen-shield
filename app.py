@@ -1,25 +1,24 @@
 import os, logging, json, requests, re
 from datetime import datetime
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response, render_template
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from dotenv import load_dotenv
 
-# Load environment variables from a .env file if present
+# Load environment variables
 load_dotenv()
 
-# ─── Logging ────────────────────────────────────────────────────────────────
+# Logging setup
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
-# ─── App Config ─────────────────────────────────────────────────────────────
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY", "dev-secret-key")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///users.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# ─── CORS Config ─────────────────────────────────────────────────────────────
+# CORS
 CORS(app,
      resources={r"/*": {"origins": os.environ.get("FRONTEND_URL", "http://127.0.0.1:5500")}},
      supports_credentials=True,
@@ -27,12 +26,12 @@ CORS(app,
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 )
 
-# ─── Extensions ─────────────────────────────────────────────────────────────
+# Extensions
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-# ─── Models ─────────────────────────────────────────────────────────────────
+# ─── Models ─────────────────────────────
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
@@ -52,12 +51,17 @@ class ScanResult(db.Model):
 with app.app_context():
     db.create_all()
 
-# ─── Helper ─────────────────────────────────────────────────────────────────
+# ─── Helper ─────────────────────────────
 def is_valid_url(url):
     pattern = re.compile(r'^https?://[^\s/$.?#].[^\s]*$')
     return bool(pattern.match(url))
 
-# ─── Routes: Auth ───────────────────────────────────────────────────────────
+# ─── Routes ─────────────────────────────
+
+@app.route("/")
+def index():
+    return render_template("home.html")  # Make sure this file exists in /templates
+
 @app.route("/register", methods=["OPTIONS", "POST"])
 def register():
     if request.method == "OPTIONS": return make_response(), 200
@@ -109,7 +113,6 @@ def profile():
     db.session.commit()
     return jsonify(msg="Profile updated"), 200
 
-# ─── Routes: Scanner ────────────────────────────────────────────────────────
 @app.route("/scan", methods=["OPTIONS", "POST"])
 @jwt_required()
 def scan():
@@ -203,6 +206,6 @@ def delete_scan(scan_id):
     db.session.commit()
     return jsonify(msg="Deleted"), 200
 
-# ─── Run ────────────────────────────────────────────────────────────────────
+# ─── Run ───────────────────────────────
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
