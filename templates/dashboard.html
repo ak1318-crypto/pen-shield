@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Pen Shield — Dashboard</title>
+{# templates/dashboard.html #}
+{% extends "base.html" %}
+
+{% block title %}Pen Shield — Dashboard{% endblock %}
+
+{% block extra_head %}
   <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <nav class="sidebar">
     <h2>Dashboard</h2>
     <a href="hub.html"><i class="icon-user"></i> Hub</a>
@@ -37,3 +38,4 @@
       <p id="profileMsg" class="message" style="display:none;"></p>
     </section>
   </main>
+{% endblock %}
