@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Pen Shield Scanner</title>
+{# templates/scanner.html #}
+{% extends "base.html" %}
+
+{% block title %}Pen Shield Scanner{% endblock %}
+
+{% block extra_head %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/scanner.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <header class="top-bar">
-    <a href="hub.html" class="nav-btn">← Hub</a>
+    <a href="{{ url_for('static', filename='hub.html') }}" class="nav-btn">← Hub</a>
     <h1>Pen Shield Scanner</h1>
-    <a href="management.html" class="nav-btn">Management</a>
+    <a href="{{ url_for('static', filename='management.html') }}" class="nav-btn">Management</a>
   </header>
 
   <main class="container">
@@ -54,5 +55,4 @@
   </main>
 
   <script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
-</body>
-</html>
+{% endblock %}
