@@ -1,4 +1,4 @@
-const apiBase = "http://127.0.0.1:5000";
+const apiBase = "https://pen-shield.onrender.com";
 
 const summaryEl = document.getElementById("scanSummary");
 const rawEl = document.getElementById("scanResultRaw");

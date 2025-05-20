@@ -1,4 +1,4 @@
-const apiBaseUrl = "http://127.0.0.1:5000";  // ✅ Ensure it uses port 5000
+const apiBase = "https://pen-shield.onrender.com";
 
 // ✅ Function to switch to the Login section
 function showLogin() {

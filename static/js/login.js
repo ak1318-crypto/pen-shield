@@ -1,4 +1,4 @@
-const apiBase = "http://127.0.0.1:5000";
+const apiBase = "https://pen-shield.onrender.com";
 
 function setToken(tok) {
   localStorage.setItem("jwt", tok);

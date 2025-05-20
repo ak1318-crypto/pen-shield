@@ -1,6 +1,6 @@
 const registerBtn = document.getElementById("registerBtn");
 const msgP        = document.getElementById("msg");
-const API         = "http://127.0.0.1:5000";
+const apiBase = "https://pen-shield.onrender.com";
 
 registerBtn.onclick = async () => {
   // hide any previous message
