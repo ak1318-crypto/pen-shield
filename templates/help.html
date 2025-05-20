@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Pen Shield — Help & Support</title>
+{% extends "base.html" %}
+
+{% block title %}Pen Shield — Help & Support{% endblock %}
+
+{% block extra_head %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/management.css') }}">
   <style>
     .faq .question {
@@ -20,8 +19,9 @@
       border-left: 3px solid #3498db;
     }
   </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <nav class="sidebar">
     <h2>Dashboard</h2>
     <a href="hub.html">Hub</a>
@@ -51,7 +51,7 @@
 
         <div class="question">Can I download my results?</div>
         <div class="answer">
-          No—on <strong>My Saved Scans</strong>, only allows Users to serach their filter/delte their scans, Downloading will be added soon!
+          No—on <strong>My Saved Scans</strong>, only allows Users to search, filter, and delete their scans; downloading will be added soon!
         </div>
 
         <div class="question">Who do I contact for further help?</div>
@@ -79,5 +79,4 @@
       });
     });
   </script>
-</body>
-</html>
+{% endblock %}
