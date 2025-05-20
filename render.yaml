@@ -3,14 +3,14 @@ services:
     name: pen-shield
     runtime: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
     autoDeploy: true
     envVars:
       - key: JWT_SECRET_KEY
         value: super-secret
       - key: DATABASE_URL
-        value: sqlite:///instance/users.db
+        value: postgresql://pen_shield_db_user:dbl8fGZtDoaLNMNtJu9Qz1OlKX1IY7O9@dpg-d0m8brhr0fns73cd4t60-a/pen_shield_db
       - key: FRONTEND_URL
         value: https://pen-shield.onrender.com
       - key: PORT
-        value: 5000
+        value: 10000
