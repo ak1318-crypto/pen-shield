@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Pen Shield — Cookie Policy</title>
+{# templates/cookies.html #}
+{% extends "base.html" %}
+
+{% block title %}Pen Shield — Cookie Policy{% endblock %}
+
+{% block extra_head %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/management.css') }}">
   <style>
     .policy p { margin-bottom: 1rem; line-height: 1.5; }
     .policy h2 { margin-top: 1.5rem; }
   </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <nav class="sidebar">
     <h2>Dashboard</h2>
     <a href="hub.html">Hub</a>
@@ -61,5 +62,4 @@
       </p>
     </section>
   </main>
-</body>
-</html>
+{% endblock %}
