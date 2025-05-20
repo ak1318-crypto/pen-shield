@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pen Shield — Login</title>
+{# templates/login.html #}
+{% extends "base.html" %}
+
+{% block title %}Pen Shield — Login{% endblock %}
+
+{% block extra_head %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <div class="login-wrapper">
     <div class="login-box">
       <h1 class="logo">Pen Shield</h1>
@@ -24,5 +25,4 @@
   </div>
 
   <script src="{{ url_for('static', filename='js/login.js') }}"></script>
-</body>
-</html>
+{% endblock %}
