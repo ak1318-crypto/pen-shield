@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Navigation Hub</title>
+{# templates/hub.html #}
+{% extends "base.html" %}
+
+{% block title %}Navigation Hub{% endblock %}
+
+{% block extra_head %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/hub.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <!-- Top Navigation Bar -->
   <div class="navbar">
     <a href="home.html" class="nav-link">Logout</a>
@@ -27,5 +28,4 @@
     <a href="help.html" class="footer-link">Help &amp; Support</a>
     <a href="cookies.html" class="footer-link">Cookie Policy</a>
   </div>
-</body>
-</html>
+{% endblock %}
