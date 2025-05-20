@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Pen Shield — My Scans</title>
+{# templates/management.html #}
+{% extends "base.html" %}
+
+{% block title %}Pen Shield — My Scans{% endblock %}
+
+{% block extra_head %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/management.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
   <aside class="sidebar">
     <h2>Dashboard</h2>
     <a href="hub.html">Hub</a>
@@ -32,5 +33,4 @@
   </main>
 
   <script src="{{ url_for('static', filename='js/management.js') }}"></script>
-</body>
-</html>
+{% endblock %}
