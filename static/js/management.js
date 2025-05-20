@@ -5,7 +5,7 @@ const btnRef   = document.getElementById("refreshBtn");
 const btnClear = document.getElementById("clearAllBtn");
 
 async function loadScans() {
-  const res = await fetch(`${API}/my_scans`,{
+  const res = await fetch(`${apiBase}/my_scans`,{
     method:"GET",
     headers:{"Authorization":`Bearer ${token}`}
   });

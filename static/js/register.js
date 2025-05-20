@@ -17,7 +17,7 @@ registerBtn.onclick = async () => {
   }
 
   try {
-    const resp = await fetch(`${API}/register`, {
+    const resp = await fetch(`${apiBase}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password })
