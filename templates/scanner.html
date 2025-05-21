@@ -9,9 +9,9 @@
 
 {% block content %}
   <header class="top-bar">
-    <a href="{{ url_for('hub') }}" class="nav-btn">← Hub</a>
+    <a href="{{ url_for('static', filename='hub.html') }}" class="nav-btn">← Hub</a>
     <h1>Pen Shield Scanner</h1>
-    <a href="{{ url_for('management') }}" class="nav-btn">Management</a>
+    <a href="{{ url_for('static', filename='management.html') }}" class="nav-btn">Management</a>
   </header>
 
   <main class="container">
